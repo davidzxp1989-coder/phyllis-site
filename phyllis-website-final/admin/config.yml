@@ -1,0 +1,184 @@
+backend:
+  name: test-repo
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+locale: "zh"
+
+# 自动保存到本地存储
+local_backend: true
+
+collections:
+  # ===== 首页设置 =====
+  - name: "settings"
+    label: "🏠 首页设置"
+    files:
+      - name: "home"
+        label: "首页信息"
+        file: "content/home.md"
+        fields:
+          - label: "中文名"
+            name: "name_cn"
+            widget: "string"
+            default: "赵丁伊"
+          - label: "英文名"
+            name: "name_en"
+            widget: "string"
+            default: "Phyllis Zhao"
+          - label: "一句话介绍"
+            name: "subtitle"
+            widget: "string"
+            default: "欢迎来到我的小天地"
+          - label: "详细介绍"
+            name: "description"
+            widget: "text"
+            default: "这里收藏着我的爱好、作品，还有和家人一起旅行的美好回忆~"
+          - label: "头像照片"
+            name: "avatar"
+            widget: "image"
+            required: false
+          - label: "学校"
+            name: "school"
+            widget: "string"
+            default: "南京市江北新区外国语学校"
+          - label: "年级"
+            name: "grade"
+            widget: "string"
+            default: "三年级"
+          - label: "生日年份"
+            name: "birth_year"
+            widget: "string"
+            default: "2017"
+
+  # ===== 我的作品 =====
+  - name: "works"
+    label: "🎨 我的作品"
+    folder: "content/works"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - label: "作品标题"
+        name: "title"
+        widget: "string"
+      - label: "作品类型"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "🎨 绘画", value: "drawing" }
+          - { label: "✂️ 手工", value: "craft" }
+          - { label: "📸 其他", value: "other" }
+        default: "drawing"
+      - label: "作品图片"
+        name: "image"
+        widget: "image"
+        required: true
+      - label: "作品描述"
+        name: "description"
+        widget: "text"
+        required: false
+      - label: "创建日期"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        default: "{{now}}"
+      - label: "排序权重"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        min: 0
+        default: 0
+        required: false
+
+  # ===== 旅行日记（朋友圈风格）=====
+  - name: "travel"
+    label: "✈️ 旅行日记"
+    folder: "content/travel"
+    create: true
+    delete: true
+    slug: "{{year}}-{{slug}}"
+    fields:
+      - label: "日记标题"
+        name: "title"
+        widget: "string"
+      - label: "旅行年份"
+        name: "year"
+        widget: "string"
+        default: "2024"
+      - label: "日记内容"
+        name: "body"
+        widget: "markdown"
+      - label: "封面照片"
+        name: "cover"
+        widget: "image"
+        required: false
+      - label: "旅行标签"
+        name: "tag"
+        widget: "select"
+        options:
+          - { label: "🏕️ 户外探索", value: "outdoor" }
+          - { label: "🎠 游乐园", value: "amusement" }
+          - { label: "🏖️ 海边", value: "beach" }
+          - { label: "🏔️ 山水", value: "mountain" }
+          - { label: "🏛️ 博物馆", value: "museum" }
+          - { label: "🌍 出国旅行", value: "abroad" }
+          - { label: "🏠 回老家", value: "hometown" }
+          - { label: "🌟 其他", value: "other" }
+        default: "other"
+      - label: "旅行日期"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        default: "{{now}}"
+      - label: "排序权重"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        min: 0
+        default: 0
+        required: false
+
+  # ===== 我的爱好 =====
+  - name: "hobbies"
+    label: "✨ 我的爱好"
+    folder: "content/hobbies"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - label: "爱好名称"
+        name: "title"
+        widget: "string"
+      - label: "图标（Emoji）"
+        name: "icon"
+        widget: "string"
+        default: "⭐"
+      - label: "详细介绍"
+        name: "description"
+        widget: "text"
+      - label: "标签1"
+        name: "tag1"
+        widget: "string"
+        required: false
+      - label: "标签2"
+        name: "tag2"
+        widget: "string"
+        required: false
+      - label: "背景颜色"
+        name: "color"
+        widget: "select"
+        options:
+          - { label: "蓝色", value: "blue" }
+          - { label: "粉色", value: "pink" }
+          - { label: "橙色", value: "orange" }
+          - { label: "绿色", value: "green" }
+          - { label: "紫色", value: "purple" }
+        default: "blue"
+      - label: "排序权重"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        min: 0
+        default: 0
+        required: false
