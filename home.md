@@ -1,4 +1,5 @@
 ---
+avatar: "/images/works/mainpage.jpg"
 name_cn: "赵丁伊"
 name_en: "Phyllis Zhao"
 subtitle: "欢迎来到我的小天地"
